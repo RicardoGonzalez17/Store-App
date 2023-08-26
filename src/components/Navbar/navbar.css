@@ -1,0 +1,68 @@
+.nav{
+    top: 0;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffd803;
+    align-items: center;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.nav > img {
+    max-width: 170px;
+    cursor: pointer;
+}
+.nav span img {
+    line-height: 20px;
+    max-width: 30px;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 20px;
+    color: #272343;
+    cursor: pointer;
+}
+
+nav > ul > li {
+    position: relative;
+}
+
+nav ul li span {
+    display: inline-block; /* Cambiar a inline-block para establecer un ancho y alto */
+    max-width: 150px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Ajusta la altura según tus necesidades */
+    line-height: 40px; /* Centrar verticalmente el contenido */
+    text-align: center; /* Centrar horizontalmente el contenido */
+    border-radius: 5px;
+    padding: 0 5px 0 5px;
+    transition: background-color 0.7s;
+}
+  
+nav ul li span:hover {
+    background-color: rgba(255, 255, 255, 0.5);    
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.container-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+}
+
+h2{
+    color: #272343;
+}
