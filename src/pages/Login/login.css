@@ -1,0 +1,63 @@
+.container_login {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    
+}
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+}
+
+.container_login form div svg {
+    width: 40px;
+}
+
+.container_login form div input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+}
+
+.container_email, .container_password {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 20%;
+}
+
+.container_login button {
+    height: 50px;
+    line-height: 50px;
+    background-color: #ffd803;
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 100%;
+    transition: 0.2s;
+    color: #e3f6f5;
+    font-weight: bold;
+    backdrop-filter: blur(15px);
+    width: 20%;
+}
+.container_login button:hover{
+    transform: scale(1.05);
+}
+
+.container_login h1{
+    color: #272343;
+}

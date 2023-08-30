@@ -1,35 +1,82 @@
 import './navbar.css'
+import { Link } from 'react-router-dom'
+import logo from '@/assets/logo-Gonzalez.png';
+import carrito from '@/assets/icons/carrito-compras.png'
+import { useUserLoginContext } from '../../hooks/useUserLoginContext'
+import { useNavbarContext } from '../../hooks/useNavbarContext'
+import { useEffect } from 'react';
 
 const Navbar = () => {
+
+    const {handleSearch} = useNavbarContext()
+    const {userLogin, getDataUserLogin, logout, login} = useUserLoginContext()
+    useEffect(()=>{
+        if(localStorage.getItem("token"))
+        {
+            const token = JSON.parse(localStorage.getItem("token"))
+            getDataUserLogin(token.token)
+        }
+    },[login])
+
   return (
     <>
     <nav className='nav'>
-       <img src="src\assets\logo-Gonzalez.png" alt="logo" />
+    <Link style={{ textDecorationLine: 'none'}} to={`/`}><img src={logo} alt="logo" /></Link>
         <ul>
             <li className='isActive'>
-                <span>Inicio</span>
+                <Link style={{ textDecorationLine: 'none'}} to={`/`}><span>Inicio</span></Link>
             </li>
             <li>
-                <span>Categorias</span>
+                <Link style={{ textDecorationLine: 'none'}} to={`/register`}><span>Categorias</span></Link>
+            </li>
+            {userLogin?
+            (
+            <>
+            <li>
+                <span>Bienvenido {userLogin.first_name}</span>
             </li>
             <li>
-                <span>Iniciar sesión</span>
+                <span onClick={logout}>Cerrar sesión</span>
             </li>
+            </>
+            ) :
             <li>
-                <span>Registrarme</span>
+                <Link style={{ textDecorationLine: 'none'}} to={`/login`}><span>Iniciar sesión</span> </Link>
             </li>
+            }   
+            {userLogin?
+            (
             <li>
-                <span> <img src='src\assets\icons\carrito-compras.png' alt='carrito compras'></img> </span>
+                {userLogin.role === 'ADMIN'?
+                (
+                    <Link style={{ textDecorationLine: 'none'}} to={`/newproduct`}><span>Nuevo producto</span></Link>
+                )
+                :
+                null
+                }
+            </li>
+            ) 
+            : 
+            <li>
+                <Link style={{ textDecorationLine: 'none'}} to={`/register`}><span>Registrarme</span></Link>
+            </li>
+            }
+            <li>
+            <Link style={{ textDecorationLine: 'none'}} to={`/`}><span> <img src={carrito} alt='carrito compras'></img> </span> </Link>
             </li>
         </ul>
+        <input 
+        type="text" 
+        name="" 
+        placeholder='Buscar producto'
+        onChange={(event) => handleSearch(event.target.value)}
+        onKeyDown={(event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault() // Previene el comportamiento por defecto
+            }
+        }}
+         />
     </nav>
-    <div className='container'>
-        <img src="src\assets\header.jpg" alt="header-img" />
-        <div className='container-text'>
-            <h1>Envios SEGUROS para todo México</h1>
-            <h2>Envio gratis a partir de $999</h2>
-        </div>
-    </div>
     </>
   )
 }

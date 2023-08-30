@@ -7,9 +7,10 @@
     align-items: center;
     border-radius: 2px;
     overflow: hidden;
+    z-index: 100;
 }
 
-.nav > img {
+.nav > a > img {
     max-width: 170px;
     cursor: pointer;
 }
@@ -31,7 +32,7 @@ nav > ul > li {
     position: relative;
 }
 
-nav ul li span {
+nav ul li a span, nav ul li span {
     display: inline-block; /* Cambiar a inline-block para establecer un ancho y alto */
     max-width: 150px; /* Ajusta el ancho según tus necesidades */
     height: auto; /* Ajusta la altura según tus necesidades */
@@ -65,4 +66,16 @@ nav ul li span:hover {
 
 h2{
     color: #272343;
+}
+
+nav ul li a {
+    color: #272343;
+}
+
+nav input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-right: 10px;
+    width: 20%;
 }

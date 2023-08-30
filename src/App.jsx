@@ -1,13 +1,22 @@
 
 import './App.css'
-import Home from './pages/Home/Home'
+import { BrowserRouter } from 'react-router-dom'
+import RoutesIndex from './routes/index'
+import Navbar from './components/Navbar/Navbar'
+import { NavbarProvider } from './context/NavbarContext'
+import { UserLoginProvider } from './context/UserLoginContext'
 
 function App() {
 
   return (
-    <>
-    <Home />
-    </>
+    <NavbarProvider>
+      <UserLoginProvider>
+      <BrowserRouter>
+        <Navbar />
+        <RoutesIndex />
+      </BrowserRouter>
+      </UserLoginProvider>
+    </NavbarProvider>
   )
 }
 

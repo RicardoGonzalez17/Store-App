@@ -1,11 +1,11 @@
 
-import Navbar from '../../components/Navbar/Navbar'
+import Header from '../../components/Header/Header'
 import ShoppingCard from '../../components/Shopping-Card/ShoppingCard'
 
 const Home = () => {
   return (
     <>
-      <Navbar />
+      <Header />
       <ShoppingCard />
     </>
   )

@@ -16,6 +16,7 @@ p{
     flex-direction: column;
     background-color: rgba(155, 155, 155, 0.4);
     border-radius: 10px;
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
 }
 
 .container-card span, .container-card p {
@@ -28,32 +29,40 @@ p{
 }
 
 .container-card img{
+    padding-top: 10px;
     max-height: 250px;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .container-card img:hover{
     transform: scale(1.1);
 }
 
-.container-card button {
+.container-card > a > button {
     height: 50px;
     line-height: 50px;
     background-color: #ffd803;
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
     border: none;
     border-radius: 20px;
+    text-decoration: none;
+    overflow: hidden;
     cursor: pointer;
     font-size: 100%;
     transition: 0.2s;
     color: #e3f6f5;
     font-weight: bold;
+    backdrop-filter: blur(15px);
+    width: 100%;
 }
 
-.container-card button:hover{
+.container-card a button:hover{
     transform: scale(1.05);
 }
 
 .container-card-footer{
+    padding-top: 10px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;

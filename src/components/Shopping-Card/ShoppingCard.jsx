@@ -1,35 +1,25 @@
 import { useEffect,useState } from 'react'
 import './shoppingcard.css'
+import { Link } from 'react-router-dom'
+import noimage from '@/assets/no-image.png'
+import { useNavbarContext } from '../../hooks/useNavbarContext'
 
 
 const ShoppingCard = () => {
-    const [items, setItems] = useState([])
-    const [error, setError] = useState(false);
+    const {filteredItems} = useNavbarContext()
 
-    useEffect(()=> {
-        fetch('https://ecommerce-json-jwt.onrender.com/items')
-        .then(response => response.json())
-        .then(data => {
-            setItems(data)
-            console.log(error)
-        })
-        .catch((error)=>{
-            setError(true)
-            console.log(error)
-        })
-    }, [])
+   
   return (
     <>
-    <div className='container-all-items'>
-        {error
-        ? <h1>Error</h1> 
-        : items.map(item=> (
+    {<div className='container-all-items'>
+        { 
+        filteredItems.map(item=> (
             <div className='container-card' key={item.id}>
-                <img src={item.image} alt="imagen-producto" />
+                <img src={item.image ? item.image : noimage} alt="imagen-producto" />
                 <span>{item.product_name}</span>
-                <label>Descripción del producto</label>
-                <p>$100.90</p>
-                <button type='button'>Agregar al carrito</button>
+                <label>{item.category}</label>
+                <p>{`$${item.price}`}</p>
+                <Link style={{ textDecorationLine: 'none'}} to={`/productdetail/${item.id}`}><button type='button'>Ver detalle</button></Link>
                 <div className='container-card-footer'>
                     <img src="src\assets\icons\entrega.png" alt="icono-entrega" />
                     <div className='container-entrega'>
@@ -40,7 +30,28 @@ const ShoppingCard = () => {
             </div>
             ))
         }
-    </div>
+    </div> }
+    {/* <div className='container-all-items'>
+        {error
+        ? <h1>Error</h1> 
+        : items.map(item=> (
+            <div className='container-card' key={item.id}>
+                <img src={item.image ? item.image : noimage} alt="imagen-producto" />
+                <span>{item.product_name}</span>
+                <label>{item.category}</label>
+                <p>{`$${item.price}`}</p>
+                <Link style={{ textDecorationLine: 'none'}} to={`/productdetail/${item.id}`}><button type='button'>Ver detalle</button></Link>
+                <div className='container-card-footer'>
+                    <img src="src\assets\icons\entrega.png" alt="icono-entrega" />
+                    <div className='container-entrega'>
+                        <label>Días para recibir tu entrega</label>
+                        <p>15 - 21</p>
+                    </div>
+                </div>
+            </div>
+            ))
+        }
+    </div> */}
     </>
   )
 }
